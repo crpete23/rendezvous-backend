@@ -4,6 +4,7 @@
   "description": "",
   "main": "knexfile.js",
   "scripts": {
+    "knex":"knex",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/crpete23/rendezvous-backend/issues"
   },
-  "homepage": "https://github.com/crpete23/rendezvous-backend#readme"
+  "homepage": "https://github.com/crpete23/rendezvous-backend#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "knex": "^0.15.2",
+    "pg": "^7.7.1"
+  }
 }
