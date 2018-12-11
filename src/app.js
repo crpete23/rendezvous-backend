@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { PORT = 3200, NODE_ENV = 'development' } = process.env
+const { PORT = 3300, NODE_ENV = 'development' } = process.env
 
 if (NODE_ENV === 'development') {
   require('dotenv').load()

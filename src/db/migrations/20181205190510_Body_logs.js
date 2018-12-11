@@ -1,13 +1,13 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('body_logs', table => {
     table.increments()
-    table.int('user_id').notNullable()
-    table.foreign('user_id').references.('users.id').onDelete('CASCADE')
-    table.int('date').notNullable()
-    table.int('weight').notNullable()
-    table.int('fat_perc')
-    table.int('lean')
-    table.int('fat')
+    table.integer('user_id').notNullable()
+    table.foreign('user_id').references('users.id').onDelete('CASCADE')
+    table.integer('date').notNullable()
+    table.integer('weight').notNullable()
+    table.integer('fat_perc')
+    table.integer('lean')
+    table.integer('fat')
     table.timestamps(true, true)
   })
 }
