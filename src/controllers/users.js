@@ -5,6 +5,7 @@ const {parseToken} = require('../lib/auth')
 function signup (req, res, next) {
   try {
     const newUser = req.body
+    newUser.dob = 01012010;
     if(!newUser.first_name || !newUser.last_name || !newUser.dob || !newUser.email || !newUser.password ) {
       throw new Error("Missing User Signup Information")
     }
