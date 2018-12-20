@@ -11,6 +11,7 @@ app.use(require('body-parser').json())
 app.use(require('cors')())
 
 app.use('/api/users', require('./routes/users'))
+app.use('/api/body', require('./routes/body'))
 
 app.use((req, res, next) => {
   const status = 404
