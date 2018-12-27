@@ -34,7 +34,7 @@ async function createLog(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const response = await model.createLog({ ...req.body}, userId)
+    const response = await model.createLog({ ...req.body, user_id: userId})
 
     res.status(201).json({"body_log": response})
   } catch (e){

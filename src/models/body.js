@@ -13,7 +13,7 @@ function getDate(userId, date){
     })
 }
 
-function createLog(body, userId){
+function createLog(body){
   return db('body_logs')
     .insert(body)
     .returning('*')
@@ -22,7 +22,8 @@ function createLog(body, userId){
 
 function updateLog(userId, date, body){
   return getDate(userId, date)
-    .then(log => {
+    .then(([log]) => {
+      console.log(log, userId, date, body)
       return db('body_logs')
         .update({
           ...log,
