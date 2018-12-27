@@ -34,7 +34,7 @@ async function createLog(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const response = await model.createPt({ ...req.body}, userId)
+    const response = await model.createLog({ ...req.body}, userId)
 
     res.status(201).json({"body_log": response})
   } catch (e){
@@ -49,7 +49,7 @@ async function updateLog(req, res, next){
 
     const date = parseInt(req.params.date)
 
-    const response = await model.updatePt(userId, date, req.body)
+    const response = await model.updateLog(userId, date, req.body)
 
     res.status(200).json({"body_log": response})
   } catch (e){
