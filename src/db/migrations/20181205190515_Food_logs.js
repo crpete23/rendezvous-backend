@@ -3,7 +3,7 @@ exports.up = function (knex, Promise) {
     table.increments()
     table.integer('user_id').notNullable()
     table.foreign('user_id').references('users.id').onDelete('CASCADE')
-    table.integer('date').notNullable()
+    table.string('date').notNullable()
     table.integer('time').notNullable()
     table.integer('meal').notNullable()
     table.foreign('meal').references('meals.id').onDelete('CASCADE')

@@ -20,7 +20,7 @@ async function getDate(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const date = parseInt(req.params.date)
+    const date = req.params.date
 
     const response = await model.getDate(userId, date)
     res.status(200).json({"body_log": response})
@@ -47,7 +47,7 @@ async function updateLog(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const date = parseInt(req.params.date)
+    const date = req.params.date
 
     const response = await model.updateLog(userId, date, req.body)
 
@@ -63,7 +63,7 @@ async function deleteLog(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const date = parseInt(req.params.date)
+    const date = req.params.date
 
     const response = await model.deleteLog(userId, date)
 
