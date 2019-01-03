@@ -1,7 +1,8 @@
 const db = require('../db')
 
 function getAll(userId){
-  return db('exercise_logs')
+  return db('exercises')
+    .join('exercise_logs', 'exercises.id', '=', 'exercise_logs.exercise')
     .where({user_id: userId})
 }
 
