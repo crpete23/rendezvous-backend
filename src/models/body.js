@@ -5,11 +5,11 @@ function getAll(userId){
     .where({user_id: userId})
 }
 
-function getDate(userId, date){
+function getId(userId, id){
   return db('body_logs')
     .where({
       user_id: userId,
-      date: date
+      id: id
     })
 }
 
@@ -20,10 +20,9 @@ function createLog(body){
     .then(([resp]) => resp)
 }
 
-function updateLog(userId, date, body){
-  return getDate(userId, date)
+function updateLog(userId, id, body){
+  return getId(userId, id)
     .then(([log]) => {
-      console.log(log, userId, date, body)
       return db('body_logs')
         .update({
           ...log,
@@ -31,19 +30,19 @@ function updateLog(userId, date, body){
           updated_at: new Date()
         })
         .where({
-          user_id: log.id,
-          date: log.date
+          user_id: log.user_id,
+          id: log.id
         })
         .returning('*')
         .then(([resp])=> resp)
     })
 }
 
-function deleteLog(userId, date){
+function deleteLog(userId, id){
   return db('body_logs')
     .where({
       user_id: userId,
-      date: date
+      id: id
     })
     .del()
     .returning('*')
@@ -52,7 +51,7 @@ function deleteLog(userId, date){
 
 module.exports = {
   getAll,
-  getDate,
+  getId,
   createLog,
   updateLog,
   deleteLog

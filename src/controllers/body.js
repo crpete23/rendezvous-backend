@@ -15,14 +15,14 @@ async function getAll(req, res, next){
   }
 }
 
-async function getDate(req, res, next){
+async function getId(req, res, next){
   try{
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const date = req.params.date
+    const id = req.params.id
 
-    const response = await model.getDate(userId, date)
+    const response = await model.getId(userId, id)
     res.status(200).json({"body_log": response})
   } catch (e){
     next({status:400, error: `Unable to find specified body log`})
@@ -47,9 +47,9 @@ async function updateLog(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const date = req.params.date
+    const id = req.params.id
 
-    const response = await model.updateLog(userId, date, req.body)
+    const response = await model.updateLog(userId, id, req.body)
 
     res.status(200).json({"body_log": response})
   } catch (e){
@@ -63,9 +63,9 @@ async function deleteLog(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    const date = req.params.date
+    const id = req.params.id
 
-    const response = await model.deleteLog(userId, date)
+    const response = await model.deleteLog(userId, id)
 
     res.status(200).json({"body_log": response})
     } catch (e){
@@ -75,7 +75,7 @@ async function deleteLog(req, res, next){
 
 module.exports = {
   getAll,
-  getDate,
+  getId,
   createLog,
   updateLog,
   deleteLog
