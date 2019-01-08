@@ -1,33 +1,33 @@
 const db = require('../db')
 
 function getAll(userId){
-  return db('exercises')
-    .join('exercise_logs', 'exercises.id', '=', 'exercise_logs.exercise')
+  return db('meals')
+    .join('food_logs', 'meals.id', '=', 'food_logs.meal')
     .where({user_id: userId})
 }
 
 function getId(userId, id){
-  return db('exercise_logs')
+  return db('food_logs')
     .where({
       user_id: userId,
       id: id
     })
 }
 
-function createLog(exercise){
-  return db('exercise_logs')
-    .insert(exercise)
+function createLog(log){
+  return db('food_logs')
+    .insert(log)
     .returning('*')
     .then(([resp]) => resp)
 }
 
-function updateLog(userId, id, exercise){
+function updateLog(userId, id, update){
   return getId(userId, id)
     .then(([log]) => {
-      return db('exercise_logs')
+      return db('food_logs')
         .update({
           ...log,
-          ...exercise,
+          ...update,
           updated_at: new Date()
         })
         .where({
@@ -40,7 +40,7 @@ function updateLog(userId, id, exercise){
 }
 
 function deleteLog(userId, id){
-  return db('exercise_logs')
+  return db('food_logs')
     .where({
       user_id: userId,
       id: id
