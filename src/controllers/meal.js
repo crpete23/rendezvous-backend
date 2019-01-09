@@ -41,7 +41,6 @@ async function updateMeal(req, res, next){
 
     res.status(200).json({"meal": response})
   } catch (e){
-    console.log(e)
     next({status: 400, error: `Unable to update specified meal`})
   }
 }
