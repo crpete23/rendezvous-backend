@@ -11,14 +11,14 @@ function getId(id){
     })
 }
 
-function createMeal(activity){
+function createActivity(activity){
   return db('exercises')
     .insert(activity)
     .returning('*')
     .then(([resp]) => resp)
 }
 
-function updateMeal(id, update){
+function updateActivity(id, update){
   return getId(id)
     .then(([activity]) => {
       return db('exercises')
@@ -35,7 +35,7 @@ function updateMeal(id, update){
     })
 }
 
-function deleteMeal(id){
+function deleteActivity(id){
   return db('exercises')
     .where({
       id: id
@@ -48,7 +48,7 @@ function deleteMeal(id){
 module.exports = {
   getAll,
   getId,
-  createMeal,
-  updateMeal,
-  deleteMeal
+  createActivity,
+  updateActivity,
+  deleteActivity
 }

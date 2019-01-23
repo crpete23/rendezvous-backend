@@ -29,6 +29,7 @@ async function createActivity(req, res, next){
 
     res.status(201).json({"activity": response})
   } catch (e){
+    console.log(e)
     next({status: 400, error: `Activity could not be created`})
   }
 }
