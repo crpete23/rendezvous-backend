@@ -5,7 +5,7 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('groups').insert([
-        {id: 1, name: 'strawberry banana smoothie', ingredients: {4:1, 5:0.5, 6:0.5}
+        {id: 1, name: 'strawberry banana smoothie', ingredients: {4:1, 5:0.5, 6:0.5}} 
       ])
     })
     .then(function () {

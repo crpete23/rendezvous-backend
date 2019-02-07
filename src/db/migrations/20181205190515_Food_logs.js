@@ -7,6 +7,7 @@ exports.up = function (knex, Promise) {
     table.integer('time').notNullable()
     table.integer('meal').notNullable()
     table.foreign('meal').references('meals.id').onDelete('CASCADE')
+    table.jsonb('food').notNullable()
     table.timestamps(true, true)
   })
 }

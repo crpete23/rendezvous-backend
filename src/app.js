@@ -17,6 +17,7 @@ app.use('/api/ingredients', require('./routes/ingredients'))
 app.use('/api/food', require('./routes/food'))
 app.use('/api/meal', require('./routes/meal'))
 app.use('/api/activity', require('./routes/activity'))
+app.use('/api/groups', require('./routes/groups'))
 
 app.use((req, res, next) => {
   const status = 404
