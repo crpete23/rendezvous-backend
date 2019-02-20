@@ -1,5 +1,4 @@
 const model = require('../models/food')
-const mealsModel = require('../models/groups')
 const {parseToken} = require('../lib/auth')
 
 function getAll(req, res, next){
@@ -7,31 +6,10 @@ function getAll(req, res, next){
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
 
-    model.getAll(userId)
-    .then((data)=>{
-      console.log(data)
-      data.map((log)=>{
-        let mealKeys = Object.keys(log.food.meals)
-        const meals = mealKeys.map(async (mealId)=>{
-          const meal = mealsModel.getId(mealId)
-          .then((response)=>{
-            return [response]
-          })
-          console.log(meal)
-          return meal
-        })
-        console.log(Promise.all(meals))
-        log.mealss = Promise.all(meals)
-        // let ingredientsKeys = Object.keys(log.food.ingredients)
-        return log
-      })
-      return data
-    })
-    .then((response)=>
+    const response = await model.getAll(userId)
     res.status(200).json({
       "food_logs": response
     })
-  )
   } catch (e){
     next({status:400, error: `Unable to get food logs`})
   }
