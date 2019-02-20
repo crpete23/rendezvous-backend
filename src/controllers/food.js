@@ -1,7 +1,7 @@
 const model = require('../models/food')
 const {parseToken} = require('../lib/auth')
 
-function getAll(req, res, next){
+async function getAll(req, res, next){
   try{
     const token = parseToken(req.headers.authorization)
     const userId = token.sub.id
